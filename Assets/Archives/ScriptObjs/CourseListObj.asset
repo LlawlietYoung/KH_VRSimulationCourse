@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493bef2321fc1ef4caaeac956a286962, type: 3}
+  m_Name: CourseListObj
+  m_EditorClassIdentifier: 
+  majorItems:
+  - majorName: "\u5236\u836F\u4E13\u4E1A"
+    courseItems:
+    - ID: 20001
+      Name: "\u5236\u836F"
+      SceneName: Zhiyao
+      sp_icon: {fileID: 0}
+      pptpath: "01\u65CB\u8F6C\u538B\u7247\u673A\u51B2\u6A21\u7684\u5B89\u88C5/\u77E5\u8BC6\u8BB2\u89E3-\u65CB\u8F6C\u5F0F\u538B\u7247\u673A\u7684\u4F7F\u7528.pptx"
+      audioClips:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      videolist:
+      - "01\u65CB\u8F6C\u538B\u7247\u673A\u51B2\u6A21\u7684\u5B89\u88C5/\u77E5\u8BC6\u8BB2\u89E3.mp4"
+  - majorName: "\u65B0\u80FD\u6E90\u6C7D\u8F66"
+    courseItems: []
