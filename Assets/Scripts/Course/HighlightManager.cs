@@ -25,31 +25,64 @@ public class HighlightManager : MonoBehaviour
     /// <param name="ids"></param>
     public void Highlight(params string[] ids)
     {
-        DisableAll();
-        foreach (string id in ids)
+        if(CourseManager.instance != null)
         {
-            Debug.Log("高亮ID" + id);
-
-            if (highlightobjs.ContainsKey(id))
+            switch (CourseManager.instance.currentMode)
             {
-                highlightobjs[id].ForEach(obj =>
-                {
-                    obj.EnableOutline();
-                });
+                //演示模式，不会进入到这里
+                case CourseMode.Demonstration:
+                    break;
+                //教学模式和练习模式需要高亮提示
+                case CourseMode.Teaching:
+                case CourseMode.Exercise:
+                    DisableAll();
+                    foreach (string id in ids)
+                    {
+                        Debug.Log("高亮ID" + id);
+
+                        if (highlightobjs.ContainsKey(id))
+                        {
+                            highlightobjs[id].ForEach(obj =>
+                            {
+                                obj.EnableOutline();
+                            });
+                        }
+                    }
+                    break;
+                //评测模式不提示
+                case CourseMode.Evaluating:
+                    break;
             }
         }
+
     }
     /// <summary>
     /// 全部关闭高亮
     /// </summary>
     public void DisableAll()
     {
-        foreach (var item in highlightobjs)
+        if (CourseManager.instance != null)
         {
-            item.Value.ForEach(obj =>
+            switch (CourseManager.instance.currentMode)
             {
-                obj.DisableOutline();
-            });
+                //演示模式，不会进入到这里
+                case CourseMode.Demonstration:
+                    break;
+                //教学模式和练习模式关闭所有高亮提示
+                case CourseMode.Teaching:
+                case CourseMode.Exercise:
+                    foreach (var item in highlightobjs)
+                    {
+                        item.Value.ForEach(obj =>
+                        {
+                            obj.DisableOutline();
+                        });
+                    }
+                    break;
+                //评测模式不提示
+                case CourseMode.Evaluating:
+                    break;
+            }
         }
     }
     /// <summary>
@@ -58,15 +91,32 @@ public class HighlightManager : MonoBehaviour
     /// <param name="ids"></param>
     public void DisableHighlight(params string[] ids)
     {
-        foreach (string id in ids)
+        if (CourseManager.instance != null)
         {
-            if (highlightobjs.ContainsKey(id))
+            switch (CourseManager.instance.currentMode)
             {
-                highlightobjs[id].ForEach(obj =>
-                {
-                    obj.DisableOutline();
-                });
+                //演示模式，不会进入到这里
+                case CourseMode.Demonstration:
+                    break;
+                //教学模式和练习模式关闭高亮提示
+                case CourseMode.Teaching:
+                case CourseMode.Exercise:
+                    foreach (string id in ids)
+                    {
+                        if (highlightobjs.ContainsKey(id))
+                        {
+                            highlightobjs[id].ForEach(obj =>
+                            {
+                                obj.DisableOutline();
+                            });
+                        }
+                    }
+                    break;
+                //评测模式不提示
+                case CourseMode.Evaluating:
+                    break;
             }
         }
+
     }
 }

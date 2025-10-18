@@ -39,8 +39,9 @@ public class Zhongmu : MonoBehaviour
     public void StartStep()
     {
         zhongmuItem.gameObject.SetActive(true);
-        //zhongmuItem.GetComponent<HighlightObj>().Regist();
+        //∏ﬂ¡¡Ã· æ
         CourseEngine.Instance.highlightManager.Highlight("zhongmu");
+
         zhongmuItem.GetComponent<XRSimpleInteractable>().enabled = true;
         btn_hit.onClick.AddListener(() =>
         {
