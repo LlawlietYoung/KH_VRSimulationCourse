@@ -8,11 +8,12 @@ public class LoadPPT : MonoBehaviour
     public Transform content;
     private void Start ()
     {
-        string pptPath = Application.dataPath + "/Plugins/Aspose.Slides.NET.18.10.0(Crack)/Test.pptx";
+        string pptPath = Application.streamingAssetsPath + "/01旋转压片机冲模的安装/旋转式压片机的结构与原理课件PPT.pptx";
         Load(pptPath);
     }
     public void Load (string pptPath)
     {
+        Debug.Log(pptPath);
         var presentation = new Aspose.Slides.Presentation(pptPath);
         //遍历文档
         for (int i = 0; i < presentation.Slides.Count; i++)
@@ -23,12 +24,12 @@ public class LoadPPT : MonoBehaviour
                 var bitmap = slide.GetThumbnail(1f, 1f);
                 byte[] bytes = Bitmap2Byte(bitmap);
 
-                var showImage = content.GetChild(i).GetComponent<UnityEngine.UI.Image>();
+                var showImage = content.GetChild(i).GetComponent<UnityEngine.UI.RawImage>();
                 int width = 960, height = 540;
                 Texture2D texture2D = new Texture2D(width, height);
                 texture2D.LoadImage(bytes);
-                Sprite sprite = Sprite.Create(texture2D, new Rect(0, 0, width, height), Vector2.zero);
-                showImage.sprite = sprite;
+                //Sprite sprite = Sprite.Create(texture2D, new Rect(0, 0, width, height), Vector2.zero);
+                showImage.texture = texture2D;
             }
         }
     }

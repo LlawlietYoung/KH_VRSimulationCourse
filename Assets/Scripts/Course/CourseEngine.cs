@@ -37,19 +37,20 @@ public class CourseEngine : MonoBehaviour
 
     private void InitEngine()
     {
-        switch (CourseManager.instance.currentMode)
-        {
-            case CourseMode.Demonstration:
+        if (CourseManager.instance)
+            switch (CourseManager.instance.currentMode)
+            {
+                case CourseMode.Demonstration:
 
-                break;
-            case CourseMode.Teaching:
-            case CourseMode.Exercise:
-            case CourseMode.Evaluating:
-                StartCoroutine(CourseFlow());
-                break;
-            default:
-                break;
-        }
+                    break;
+                case CourseMode.Teaching:
+                case CourseMode.Exercise:
+                case CourseMode.Evaluating:
+                    StartCoroutine(CourseFlow());
+                    break;
+                default:
+                    break;
+            }
     }
 
     private IEnumerator CourseFlow()
@@ -104,6 +105,7 @@ public class CourseEngine : MonoBehaviour
             //chapter.OnChapterFinish.Invoke();
         }
         model.OnCourseFinish.Invoke();
+        print("¿Î³Ì½áÊø");
         resultUICanvas.Open();
     }
 

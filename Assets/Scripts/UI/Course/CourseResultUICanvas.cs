@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class CourseResultUICanvas : MonoBehaviour
     public Button btn_confirm;
     public void Open()
     {
+        gameObject.SetActive(true);
+        //打开结果面板
         for (int i = 0; i < CourseEngine.Instance.model.chapters.Count; i++)
         {
             CourseChapter chapter = CourseEngine.Instance.model.chapters[i];
@@ -30,5 +33,7 @@ public class CourseResultUICanvas : MonoBehaviour
         {
             SceneManager.LoadScene("Main");
         });
+        GetComponent<CanvasGroup>().DOFade(1, 0.3f);
+
     }
 }

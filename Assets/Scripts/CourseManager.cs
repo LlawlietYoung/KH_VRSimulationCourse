@@ -29,7 +29,13 @@ public class CourseManager : MonoBehaviour
     public CourseMode currentMode = CourseMode.Teaching;
     private void Awake()
     {
+        if(instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     public void OpenCourse(int courseId)
     {
