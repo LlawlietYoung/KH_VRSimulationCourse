@@ -16,5 +16,6 @@ public class Chapter02_Node02 : CourseNodeController
             Appendhandle(c);
             Finish(r);
         };
+        Prepared = true;
     }
 }

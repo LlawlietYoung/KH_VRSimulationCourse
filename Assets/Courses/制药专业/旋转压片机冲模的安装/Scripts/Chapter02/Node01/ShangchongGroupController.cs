@@ -11,7 +11,6 @@ public class ShangchongGroupController : MonoBehaviour
     //需要手动安装的第一个上冲
     public ShangchongItemController shangchong;
     public GameObject step1hint;
-    public GameObject step2hint01, step2hint02;
 
     public Action<bool, string> onFinished01,onFinished02;
 
@@ -24,6 +23,7 @@ public class ShangchongGroupController : MonoBehaviour
     {
         currentstep = 1;
         shangchong.gameObject.SetActive(true);
+        shangchong.SetStep(currentstep);
         CourseEngine.Instance.highlightManager.Highlight("shangchong");
         if(CourseManager.instance.currentMode != CourseMode.Evaluating)
         {
@@ -39,16 +39,20 @@ public class ShangchongGroupController : MonoBehaviour
         //第一步中使用
         if(currentstep == 1)
         {
-            //上冲被拖到了正确的位置
-            if (shangchong.CorrectPosition)
+            this.Delay(0.1f, () =>
             {
-                //高亮提示关闭
-                CourseEngine.Instance.highlightManager.DisableAll();
-                shangchong.enabled = false;
-                step1hint.SetActive(false);
-                //结束本环节
-                onFinished01?.Invoke(shangchong.islefthandle, shangchong.Result);
-            }
+                Debug.Log(shangchong.CorrectPosition);
+                //上冲被拖到了正确的位置
+                if (shangchong.CorrectPosition)
+                {
+                    //高亮提示关闭
+                    CourseEngine.Instance.highlightManager.DisableAll();
+                    //shangchong.enabled = false;
+                    step1hint.SetActive(false);
+                    //结束本环节
+                    onFinished01?.Invoke(shangchong.islefthandle, shangchong.Result);
+                }
+            });
         }
     }
 
@@ -58,14 +62,17 @@ public class ShangchongGroupController : MonoBehaviour
     private bool isRightGrabZhuanlun = false;
     private List<(float, float)> angles = new List<(float, float)>()
     {
-        (-30f,20f),(-60f,40f),(-90f,60f)
+        (-30f,-20f),(-60f,-40f),(-90f,-60f)
     };
     private Coroutine cor_rotate;
     public GameObject HandlePanelPoint_step02_chongjing;
     public Button btn_confirm, btn_cancel;
+    public GameObject step2hint01, step2hint02;
+
     public void StartStep2()
     {
         currentstep = 2;
+        shangchong.SetStep(currentstep);
         step2hint01.SetActive(true);
         step2hint02.SetActive(true);
         zhuanlunItemmControllerr.enabled = true;
@@ -96,6 +103,10 @@ public class ShangchongGroupController : MonoBehaviour
             if (isLeftGrabShangchong) CheckStartRotate();
         }
     }
+    /// <summary>
+    /// 第二部判断是不是右手触发转轮
+    /// </summary>
+    /// <param name="args"></param>
     public void OnZhuanlunGrabbed_step2(SelectEnterEventArgs args)
     {
         if (currentstep == 2)
@@ -116,9 +127,10 @@ public class ShangchongGroupController : MonoBehaviour
     }
     private IEnumerator Rotate()
     {
-        if(current < 3)
+        while(current < 3)
         {
-            zhuanlunItemmControllerr.transform.DOLocalRotate(new Vector3(0, 90, angles[1].Item1), 1);
+            zhuanlunItemmControllerr.transform.DOLocalRotate(new Vector3(0, 90, angles[current].Item1), 1);
+            zhuandongmozu.transform.DOLocalRotate(new Vector3(0, angles[current].Item1, 0), 1);
             yield return new WaitForSeconds(3);
             current++;
         }
@@ -149,6 +161,10 @@ public class ShangchongGroupController : MonoBehaviour
     private void EndStep2()
     {
         CourseEngine.Instance.highlightManager.DisableAll();
-        onFinished02.Invoke(isRightGrabZhuanlun && isLeftGrabShangchong && current == 2, isRightGrabZhuanlun ? "右手" : "左手" + "操作转轮；" + (isLeftGrabShangchong ? "左手" : "右手") + "操作冲杆颈" + "冲颈杆" + (current == 2 ? "" : "未") + "接触平行轨");
+        HandlePanelPoint_step02_chongjing.SetActive(false);
+        step2hint01.SetActive(false);
+        step2hint02.SetActive(false);
+
+        onFinished02.Invoke(isRightGrabZhuanlun && isLeftGrabShangchong && current == 2, (isRightGrabZhuanlun ? "右手" : "左手") + "操作转轮；" + (isLeftGrabShangchong ? "左手" : "右手") + "操作冲杆颈" + "冲颈杆" + (current == 2 ? "" : "未") + "接触平行轨");
     }
 }

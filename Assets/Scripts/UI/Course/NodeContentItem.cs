@@ -24,6 +24,6 @@ public class NodeContentItem : MonoBehaviour
     }
     public void SetScore(float score, bool result)
     {
-        tt_score.text = result ? "":"" + "  " + "得分：" + score;
+        tt_score.text = (result ? "<color=green>正确</color>":"<color=red>错误</color>") + "  " + "得分：" + score.ToString("00.0");
     }
 }

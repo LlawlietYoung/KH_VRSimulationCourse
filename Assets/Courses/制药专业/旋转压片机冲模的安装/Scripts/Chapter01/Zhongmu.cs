@@ -65,19 +65,20 @@ public class Zhongmu : MonoBehaviour
             {
                 this.Delay(1, () =>
                 {
-                    onfinshed?.Invoke(Current == 3, "操作记录");
+                    onfinshed?.Invoke(Current == 3, "打入了"+ current + "次；" + ((Current == 3)? "中模平面不高出转台平面" : "中模平面高出转台平面"));
                 });
             }
         });
     }
     private IEnumerator HitAll()
     {
+        int time = current;
         while (Current < 4)
         {
             yield return new WaitForSeconds(1);
             Current++;
         }
-        onfinshed?.Invoke(false, "操作记录");
+        onfinshed?.Invoke(false, "打入了" + time + "次；" + ((time == 3) ? "中模平面不高出转台平面" : "中模平面高出转台平面"));
     }
     public void ShowHandlePanel()
     {

@@ -58,7 +58,13 @@ public class CourseEngine : MonoBehaviour
         int nodecount = 0;
         for (int i = 0; i < model.chapters.Count; i++)
         {
-            nodecount += model.chapters[i].nodes.Count;
+            for (int j = 0; j < model.chapters[i].nodes.Count; j++)
+            {
+                if (model.chapters[i].nodes[j].controller.NeedGrade)
+                {
+                    nodecount++;
+                }
+            }
         }
         float stepscore = 100f / nodecount;
         //当课程开始时候调用一些准备工作
@@ -96,6 +102,7 @@ public class CourseEngine : MonoBehaviour
                 yield return new WaitUntil(() => node.controller.Prepared);
                 yield return new WaitUntil(() => mainUICanvas.close);
                 yield return new WaitUntil(() => node.controller.Finished);
+                print("结束本节点");
                 node.result = node.controller.result;
                 node.handlecontent = node.controller.handlecontent.ToString();
                 node.score = node.controller.result ? stepscore : 0;

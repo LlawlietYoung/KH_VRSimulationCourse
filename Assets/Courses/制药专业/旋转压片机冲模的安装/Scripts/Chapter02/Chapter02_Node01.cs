@@ -11,8 +11,10 @@ public class Chapter02_Node01 : CourseNodeController
         controller.StartStep1();
         controller.onFinished01 += (r, c) =>
         {
+            Debug.Log("上冲安装第一步结束");
             Appendhandle(c);
             Finish(r);
         };
+        Prepared = true;
     }
 }

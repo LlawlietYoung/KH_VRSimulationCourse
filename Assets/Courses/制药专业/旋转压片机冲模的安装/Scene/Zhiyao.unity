@@ -1595,6 +1595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   result: 0
   Finished: 0
+  NeedGrade: 1
   LuosiGroup: {fileID: 7980228399453955029}
 --- !u!1 &392220928
 GameObject:
@@ -2170,6 +2171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   result: 0
   Finished: 0
+  NeedGrade: 1
   shanghcong: {fileID: 4890330102981474957}
 --- !u!1 &489126693
 GameObject:
@@ -2388,6 +2390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   result: 0
   Finished: 0
+  NeedGrade: 1
   controller: {fileID: 4890330102981474957}
 --- !u!1 &576096473
 GameObject:
@@ -3181,6 +3184,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d6a5c44b1d89b48a39308f1afcfb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &756070832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 756070833}
+  m_Layer: 0
+  m_Name: Attach
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &756070833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756070832}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.011199951, y: 0.012, z: 0.11379999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4890330102981474956}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &757790291
 GameObject:
   m_ObjectHideFlags: 0
@@ -3304,6 +3338,7 @@ GameObject:
   - component: {fileID: 764086392}
   - component: {fileID: 764086395}
   - component: {fileID: 764086394}
+  - component: {fileID: 764086396}
   m_Layer: 0
   m_Name: "\u8F6C\u8F6E"
   m_TagString: Untagged
@@ -3653,6 +3688,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!64 &764086396
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764086382}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7209279339441760943, guid: d2b84d1c85d17134cbe684710599a45e, type: 3}
 --- !u!1 &845385849
 GameObject:
   m_ObjectHideFlags: 0
@@ -8287,7 +8344,7 @@ MonoBehaviour:
   m_SmoothRotation: 0
   m_SmoothRotationAmount: 8
   m_TightenRotation: 0.1
-  m_TrackScale: 1
+  m_TrackScale: 0
   m_SmoothScale: 0
   m_SmoothScaleAmount: 8
   m_TightenScale: 0.1
@@ -8392,6 +8449,8 @@ MonoBehaviour:
   correctminlimity: 0.006
   correctmaxlimity: 0.03
   islefthandle: 0
+  step: 0
+  tracktargetonstep2: {fileID: 756070833}
 --- !u!1 &1317257182
 GameObject:
   m_ObjectHideFlags: 0
@@ -8803,6 +8862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   result: 0
   Finished: 0
+  NeedGrade: 0
   luosiGroup: {fileID: 7980228399453955029}
 --- !u!1 &1460277344
 GameObject:
@@ -9977,7 +10037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1826369224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10097,7 +10157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tt_content: {fileID: 1037153386}
-  distance: 2
+  distance: 1
 --- !u!225 &1826369230
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -10210,6 +10270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   result: 0
   Finished: 0
+  NeedGrade: 1
   zhongmu: {fileID: 7359245090460980392}
 --- !u!1 &1879539675
 GameObject:
@@ -17079,6 +17140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 756070833}
   - {fileID: 1310747699}
   - {fileID: 489126694}
   - {fileID: 753120394}
@@ -17105,13 +17167,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shangchong: {fileID: 1310747704}
   step1hint: {fileID: 489126693}
-  step2hint01: {fileID: 753120393}
-  step2hint02: {fileID: 2072605059}
   zhuanlunItemmControllerr: {fileID: 764086387}
   zhuandongmozu: {fileID: 285074822}
-  HandlePanelPoint_step02_chongjing: {fileID: 0}
-  btn_confirm: {fileID: 0}
-  btn_cancel: {fileID: 0}
+  HandlePanelPoint_step02_chongjing: {fileID: 1826369223}
+  btn_confirm: {fileID: 1029965947}
+  btn_cancel: {fileID: 78250182}
+  step2hint01: {fileID: 753120393}
+  step2hint02: {fileID: 2072605059}
 --- !u!4 &4899115869046397933
 Transform:
   m_ObjectHideFlags: 0

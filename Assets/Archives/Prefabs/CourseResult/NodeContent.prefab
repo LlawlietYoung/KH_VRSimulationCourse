@@ -179,11 +179,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "1.01 \u4E2D\u6A21\u7684\u5B89\u88C51.01 \u4E2D\u6A21\u7684\u5B89\u88C51.01
-    \u4E2D\u6A21\u7684\u5B89\u88C51.01 \u4E2D\u6A21\u7684\u5B89\u88C51.01 \u4E2D\u6A21\u7684\u5B89\u88C51.01
-    \u4E2D\u6A21\u7684\u5B89\u88C51.01 \u4E2D\u6A21\u7684\u5B89\u88C51.01 \u4E2D\u6A21\u7684\u5B89\u88C51.01
-    \u4E2D\u6A21\u7684\u5B89\u88C51.01 \u4E2D\u6A21\u7684\u5B89\u88C51.01 \u4E2D\u6A21\u7684\u5B89\u88C51.01
-    \u4E2D\u6A21\u7684\u5B89\u88C5"
+  m_Text: 
 --- !u!114 &1964716498945240216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +400,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1.01 '
+  m_Text: 
 --- !u!114 &1216749074914937731
 MonoBehaviour:
   m_ObjectHideFlags: 0

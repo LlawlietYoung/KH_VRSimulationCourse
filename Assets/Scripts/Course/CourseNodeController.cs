@@ -17,6 +17,10 @@ public class CourseNodeController : MonoBehaviour
     //是否结束了本届点
     [HideInInspector]
     public bool Finished = false;
+    /// <summary>
+    /// 这个节点是否需要评分
+    /// </summary>
+    public bool NeedGrade = true;
 
     public virtual void StartNode()
     {
@@ -30,5 +34,6 @@ public class CourseNodeController : MonoBehaviour
     {
         this.result = result;
         Finished = true;
+        Debug.Log("第一步结束");
     }
 }

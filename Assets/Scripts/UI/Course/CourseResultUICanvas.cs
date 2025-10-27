@@ -25,8 +25,11 @@ public class CourseResultUICanvas : MonoBehaviour
             {
                 NodeContentItem nodeitem = Instantiate(nodecontentItem, content);
                 nodeitem.title = (i + 1) + "," + (j + 1) + " " + chapter.nodes[j].Content;
-                nodeitem.SetScore(chapter.nodes[j].score, chapter.nodes[j].result);
-                nodeitem.content = chapter.nodes[j].handlecontent;
+                if(chapter.nodes[j].controller.NeedGrade)
+                {
+                    nodeitem.SetScore(chapter.nodes[j].score, chapter.nodes[j].result);
+                    nodeitem.content = chapter.nodes[j].handlecontent;
+                }
             }
         }
         btn_confirm.onClick.AddListener(() =>
