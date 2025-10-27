@@ -55,12 +55,29 @@ public class Zhongmu : MonoBehaviour
                 item.gameObject.SetActive(true);
                 item.DOLocalMoveZ(0, 1);
             }
-            this.Delay(1, () =>
-            {
-                onfinshed?.Invoke(true,"操作记录");
-            });
+            
             HandlePanel.SetActive(false);
+            if(Current < 3)
+            {
+                StartCoroutine(HitAll());
+            }
+            else
+            {
+                this.Delay(1, () =>
+                {
+                    onfinshed?.Invoke(Current == 3, "操作记录");
+                });
+            }
         });
+    }
+    private IEnumerator HitAll()
+    {
+        while (Current < 4)
+        {
+            yield return new WaitForSeconds(1);
+            Current++;
+        }
+        onfinshed?.Invoke(false, "操作记录");
     }
     public void ShowHandlePanel()
     {

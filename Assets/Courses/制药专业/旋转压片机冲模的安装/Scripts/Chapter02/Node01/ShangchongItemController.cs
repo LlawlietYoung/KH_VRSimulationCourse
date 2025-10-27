@@ -14,9 +14,10 @@ public class ShangchongItemController : MonoBehaviour
     // Start is called before the first frame update
     public bool CorrectPosition => transform.localPosition.y < correctmaxlimity && transform.localPosition.y > correctminlimity;
     //判断是否是左手操作
+    [HideInInspector]
     public bool islefthandle = false;
     public bool Grabbed { get; set; }
-    public string Result => islefthandle ? "最后为左手操作；" : "最后为右手操作" + (CorrectPosition ? "放置到了正确的位置" : "没放置到正确位置");
+    public string Result => islefthandle ? "最后为左手操作；" : "最后为右手操作；" + (CorrectPosition ? "放置到了正确的位置" : "没放置到正确位置");
 
     void Start()
     {

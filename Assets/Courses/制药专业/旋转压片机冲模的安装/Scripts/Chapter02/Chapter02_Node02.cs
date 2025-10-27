@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chapter02_Node01 : CourseNodeController
+public class Chapter02_Node02 : CourseNodeController
 {
-    public ShangchongGroupController controller;
+    public ShangchongGroupController shanghcong;
     public override void StartNode()
     {
         base.StartNode();
-        controller.StartStep1();
-        controller.onFinished01 += (r, c) =>
+
+        shanghcong.StartStep2();
+
+        shanghcong.onFinished02 += (r, c) =>
         {
             Appendhandle(c);
             Finish(r);
